@@ -1,3 +1,7 @@
+import Controllers.LibroController;
+import Models.Book;
+import Views.ViewConsole;
+
 public class App {
     public static void main(String[] args) throws Exception {
 
@@ -33,6 +37,34 @@ public class App {
                 new Book("Deep Learning", 2016),
                 new Book("The Elements of Statistical Learning", 2001)
         };
+//------------------------------------------------------------------------------------------------
+        ViewConsole vC = new ViewConsole();
+        LibroController lC = new LibroController();
+//------------------------------------------------------------------------------------------------
+        vC.showMessage("----------Arreglo----------");
+        vC.imprimirArreglo(books);
+//------------------------------------------------------------------------------------------------
+        vC.showMessage("----------Arreglo ordenado----------");
+        lC.sortByName(books);
+        vC.imprimirArreglo(books);
+//------------------------------------------------------------------------------------------------
+        vC.showMessage("\n----------Busqueda binaria libro1----------");
+        Book libro1 = lC.searchByName(books, "The Linux Programming Interface");
 
+        if(libro1 == null){
+            System.out.println("\nLibro no encontrado");
+        }else{
+            System.out.println("\nLibro encontrado:" + libro1.toString());
+        }
+//------------------------------------------------------------------------------------------------
+        vC.showMessage("\n----------Busqueda binaria libro2----------");
+        Book libro2 = lC.searchByName(books, "Deep Learning");
+
+        if(libro2 == null){
+            System.out.println("\nLibro no encontrado");
+        }else{
+            System.out.println("\nLibro encontrado:" + libro2.toString());
+        }
+//------------------------------------------------------------------------------------------------
     }
 }
